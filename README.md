@@ -22,7 +22,7 @@ Een mogelijke oplossing is om alle data te bewaren in een (al dan niet relatione
 In dit geval is het dus beter de waarde van deze variabele te bewaren in de *localStorage* van de browser. De localStorage kan worden benaderd door gebruik te maken van [JavaScript interoperability](https://learn.microsoft.com/en-us/aspnet/core/blazor/javascript-interoperability/?view=aspnetcore-8.0), hiermee kan JavaScript worden aangeroepen vanuit Blazor C#.
 Omdat deze functionaliteit vaak nodig is, is er een NuGet package beschikbaar die dit voor ons afhandelt: [Blazored.LocalStorage](https://github.com/Blazored/LocalStorage)
 
-## Oefening
+## Opdracht
 1. Installeer het Blazored.LocalStorage package			
 ![localStorage](assets/nuget_localstorage.png)		
 
@@ -31,7 +31,7 @@ Omdat deze functionaliteit vaak nodig is, is er een NuGet package beschikbaar di
         builder.Services.AddBlazoredLocalStorage();
 
 3. Lees de documentatie van de [Blazored.LocalStorage](https://github.com/Blazored/LocalStorage?tab=readme-ov-file#usage-blazor-server) en los bovenstaand probleem op door de waarde van de counter variabele te bewaren in de *localStorage*. Uiteraard dient de waarde ook opnieuw uitgelezen te worden wanneer het component gerenderd wordt, gebruik hiervoor de *OnAfterRenderAsync* method. 
-4. Gebruik de *StateHasChanged()* method om de UI te refreshen wanneer de waarde van de counter variabele verandert.
+4. Omdat het package achter de schermen gebruik maakt van *JS interop* kan de localStorageService enkel gebruikt worden **nadat** het component volledig is "geladen" (*On**After**RenderAsync*). De nieuwe waarde van de counter variabele zal daarom niet automatisch getoond worden in de UI. Gebruik daarom de *StateHasChanged()* method om de UI te refreshen wanneer de waarde van de counter variabele verandert.
 
 
 De [Blazored](https://github.com/Blazored/) collectie bevat nog enkele andere leuke packages die je kan gebruiken in je Blazor projecten! ;-)
