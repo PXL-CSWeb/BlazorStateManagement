@@ -30,47 +30,4 @@ De [Blazored](https://github.com/Blazored/) collectie bevat nog enkele andere le
 
         builder.Services.AddBlazoredLocalStorage();
 
-3. Injecteer de *ILocalStorageService* in het *Counter.razor* component
-4. Haal de waarde van de counter variabele op uit de *localStorage* in de *OnAfterRenderAsync* lifecycle method
-5. Bewaar de waarde van de counter variabele in de *localStorage* in de *IncrementCount* method
-
-        @inject Blazored.LocalStorage.ILocalStorageService localStorage
-        @page "/counter"
-        @rendermode InteractiveServer
-
-        <PageTitle>Counter</PageTitle>
-
-        @if(currentCount.HasValue)
-        {
-            <h1>Counter</h1>
-
-            <p role="status">Current count: @currentCount</p>
-
-            <button class="btn btn-primary" @onclick="IncrementCount">Click me</button>
-        }
-        else
-        {
-            <p><em>Loading...</em></p>
-        }
-        @code {
-            private int? currentCount;
-
-            protected override async Task OnAfterRenderAsync(bool firstRender)
-            {
-                await Task.Delay(1000); // Only to simulate a delay
-
-                // Get value for currentCount from local storage
-                currentCount = await localStorage.GetItemAsync<int>("counter");
-
-                // Notify Blazor that the state has changed
-                StateHasChanged();
-            }
-
-            private async Task IncrementCount()
-            {
-                currentCount++;
-
-                // Store the new value of currentCount in local storage
-                await localStorage.SetItemAsync("counter", currentCount);
-            }
-        }
+3. Lees de documentatie van de [Blazored.LocalStorage](https://github.com/Blazored/LocalStorage?tab=readme-ov-file#usage-blazor-server) en los bovenstaand probleem op door de waarde van de counter variabele te bewaren in de *localStorage*. Uiteraard dient de waarde ook opnieuw uitgelezen te worden wanneer een component gerenderd wordt.
