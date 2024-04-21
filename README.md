@@ -23,11 +23,15 @@ In dit geval is het dus beter de waarde van deze variabele te bewaren in de *loc
 Omdat deze functionaliteit vaak nodig is, is er een NuGet package beschikbaar die dit voor ons afhandelt: [Blazored.LocalStorage](https://github.com/Blazored/LocalStorage)
 
 ## Oefening
-1. Installeer de Blazored.LocalStorage package			
+1. Installeer het Blazored.LocalStorage package			
 ![localStorage](assets/nuget_localstorage.png)		
-De [Blazored](https://github.com/Blazored/) collectie bevat nog enkele andere leuke packages die je kan gebruiken in je Blazor projecten!
+
 2. Registreer de service in de *Program.cs* file
 
         builder.Services.AddBlazoredLocalStorage();
 
-3. Lees de documentatie van de [Blazored.LocalStorage](https://github.com/Blazored/LocalStorage?tab=readme-ov-file#usage-blazor-server) en los bovenstaand probleem op door de waarde van de counter variabele te bewaren in de *localStorage*. Uiteraard dient de waarde ook opnieuw uitgelezen te worden wanneer een component gerenderd wordt.
+3. Lees de documentatie van de [Blazored.LocalStorage](https://github.com/Blazored/LocalStorage?tab=readme-ov-file#usage-blazor-server) en los bovenstaand probleem op door de waarde van de counter variabele te bewaren in de *localStorage*. Uiteraard dient de waarde ook opnieuw uitgelezen te worden wanneer het component gerenderd wordt, gebruik hiervoor de *OnAfterRenderAsync* method. 
+4. Gebruik de *StateHasChanged()* method om de UI te refreshen wanneer de waarde van de counter variabele verandert.
+
+
+De [Blazored](https://github.com/Blazored/) collectie bevat nog enkele andere leuke packages die je kan gebruiken in je Blazor projecten! ;-)
